@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'javac -d . HelloWorld.java'
                 sh 'jar -cvf Hellojava.jar HelloWorld.class'
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: false
+                archiveArtifacts artifacts: 'dist/*.jar', fingerprint: false
             }
         }
         stage('Test') {
