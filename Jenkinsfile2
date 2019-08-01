@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'javac -d . HelloWorld.java'
+                sh 'jar -cvf Hellojava.jar HelloWorld.class'
+                archiveArtifacts artifacts: '**/target/*.jar', name: 'Hellojava'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
